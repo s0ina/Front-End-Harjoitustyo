@@ -4,6 +4,8 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 
+
+
 export default function Customerlist() {
     const [customer, setCustomer] = useState({firstname: '', lastname: '', streetaddress: '', postcode: '', city: '', email: '', phone: ''});
     const [customers, setCustomers] = useState([]);
@@ -24,6 +26,9 @@ export default function Customerlist() {
     const inputChanged = (event) => {
         setCustomer ({...customer, [event.target.name]: event.target.value});
     }
+
+    
+    
 
     const columns = [
         {
@@ -65,7 +70,27 @@ export default function Customerlist() {
             sortable: true
         },
 
-    ]
+        {
+            headerName: 'Delete',
+            cellRendererFramework: (params) => {
+                return (
+                    <button onClick={(event) => deleteCustomer(event, params.data)}>Delete</button>
+                );
+            },
+            width: 100,
+        },
+    ];
+
+    const deleteCustomer = (event, customer) => {
+        console.log("data:", customer);
+        const selfUrl = customer.links.find(link => link.rel === 'self').href;
+        fetch(selfUrl, { method: "DELETE" })
+            .then(response => fetchCstmrs())
+            .catch(err => console.error(err))
+    };
+
+    
+
 
     return (
         <>

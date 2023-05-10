@@ -8,7 +8,7 @@
 }
 
 button {
-  background-color:rgb(16, 140, 64);
+  background-color:rgb(63, 169, 104);
   border: none;
   color: white;
   padding: 10px 20px;
@@ -33,11 +33,11 @@ button:active {
 
 
 .ag-theme-alpine {
-  --ag-background-color: rgb(232, 240, 226); 
+  --ag-background-color: rgb(227, 239, 219); 
   --ag-foreground-color: rgb(0, 0, 0);
-  --ag-odd-row-background-color: rgb(212, 229, 201); 
-  --ag-header-foreground-color: rgb(233, 242, 227);
-  --ag-header-background-color: rgb(16, 140, 64);
+  --ag-odd-row-background-color: rgb(168, 217, 166); 
+  --ag-header-foreground-color: rgb(242, 246, 240);
+  --ag-header-background-color: rgb(63, 169, 104);
   --ag-header-cell-hover-background-color: rgb(16, 122, 56);
 
 }
@@ -53,6 +53,13 @@ input {
   padding: 10px 10px;
   margin: 5px 0;
   box-sizing: border-box;
+}
+
+colorDefault {
+  color: rgb(16, 140, 64);  
+}
+.MuiAppBar-colorDefault {
+  color: rgb(16, 140, 64);
 }
 
 
@@ -89,6 +96,9 @@ input {
   to {
     transform: rotate(360deg);
   }
+
+
+
 
 
 }

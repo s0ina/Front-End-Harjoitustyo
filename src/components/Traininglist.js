@@ -98,8 +98,26 @@ export default function Traininglist() {
             headerName: 'Last name',
             field:'customer.lastname',
             sortable: true
-        }
+        },
+        {
+            headerName: 'Delete',
+            cellRendererFramework: (params) => {
+                return (
+                    <button onClick={(event) => deleteTraining(event, params.data)}>Delete</button>
+                );
+            },
+            width: 100,
+        },
     ];
+    
+    const deleteTraining = (event, training) => {
+        console.log("data:", training);
+        const selfUrl = training.links.find(link => link.rel === 'self').href;
+        fetch(selfUrl, { method: "DELETE" })
+            .then(response => fetchTrnings())
+            .catch(err => console.error(err))
+    };
+    
 
 
     return (
@@ -121,9 +139,11 @@ export default function Traininglist() {
                  </option>
                  ))}
                 </select>
-
+                <br></br>
+                <br></br>
                 <button onClick={addTraining}>Add Training</button>
             </div>
+            <br></br>
             <div className="ag-theme-alpine" style={{height: '72rem'}}>
                 <AgGridReact style={{ width: 500, height: 500 }}
                     columnDefs={columns}
